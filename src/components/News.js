@@ -45,32 +45,6 @@ export class News extends Component {
         {
             "source": {
                 "id": null,
-                "name": "New York Times"
-            },
-            "author": "Adam Liptak, Glenn Thrush",
-            "title": "Supreme Court Ends Biden’s Eviction Moratorium - The New York Times",
-            "description": "The ruling followed political and legal maneuvering by the administration to retain protections for tenants. It puts hundreds of thousands at risk of being put out of their homes.",
-            "url": "https://www.nytimes.com/2021/08/27/us/eviction-moratorium-ends.html",
-            "urlToImage": "https://static01.nyt.com/images/2021/08/24/us/politics/00dc-scotus-evict/00dc-scotus-evict-facebookJumbo.jpg",
-            "publishedAt": "2021-08-27T04:02:00Z",
-            "content": "It will most likely take a while for the backlog of eviction cases in many states to result in the displacement of renters. But tenant groups in the South, where fast-track evictions are common, are … [+2236 chars]"
-        },
-        {
-            "source": {
-                "id": "google-news",
-                "name": "Google News"
-            },
-            "author": null,
-            "title": "Thursday night tropical storm Ida: Hurricane Watch for Louisiana - WWLTV",
-            "description": null,
-            "url": "https://news.google.com/__i/rss/rd/articles/CBMiK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9bTJSSHRSU1c5aHfSAQA?oc=5",
-            "urlToImage": null,
-            "publishedAt": "2021-08-27T03:29:16Z",
-            "content": null
-        },
-        {
-            "source": {
-                "id": null,
                 "name": "BBC News"
             },
             "author": "https://www.facebook.com/bbcnews",
@@ -145,19 +119,6 @@ export class News extends Component {
             "urlToImage": "https://www.cnet.com/a/img/FjAUu7etG9736ssg2FZqfIA5ZWE=/1200x630/left/top/2021/08/20/436c4c30-dd8d-4a6a-b7d8-734a1171698b/tesla-ai-day-00000.jpg",
             "publishedAt": "2021-08-27T01:30:04Z",
             "content": "Musk says a Tesla Bot prototype is coming in 2022. Really?\r\nCNET\r\nElon Musk says he'll have a humanoid robot to show off next year, but the iconoclastic entrepreneur has a  mixed record when it comes… [+9272 chars]"
-        },
-        {
-            "source": {
-                "id": "bloomberg",
-                "name": "Bloomberg"
-            },
-            "author": null,
-            "title": "Biden Advisers Weigh Powell as Fed Chair, Brainard as Vice Chair - Bloomberg",
-            "description": null,
-            "url": "https://www.bloomberg.com/tosv2.html?vid=&uuid=4844c34f-06f2-11ec-9960-664548637770&url=L25ld3MvYXJ0aWNsZXMvMjAyMS0wOC0yNy9iaWRlbi1hZHZpc2Vycy13ZWlnaC1wb3dlbGwtYXMtZmVkLWNoYWlyLWJyYWluYXJkLWFzLXZpY2UtY2hhaXI=",
-            "urlToImage": null,
-            "publishedAt": "2021-08-27T01:25:00Z",
-            "content": "To continue, please click the box below to let us know you're not a robot."
         },
         {
             "source": {
@@ -249,23 +210,10 @@ export class News extends Component {
             "urlToImage": "https://static.politico.com/45/56/0a779f9346b792b3338f03efc3ad/210310-capitol-riot-773.jpg",
             "publishedAt": "2021-08-26T23:54:56Z",
             "content": "Byrd, a 28-year veteran of the force, described how he yelled at rioters to tell them to stop before they entered the Speakers Lobby outside the House chamber. Officers had barricaded the doors with … [+4429 chars]"
-        },
-        {
-            "source": {
-                "id": "google-news",
-                "name": "Google News"
-            },
-            "author": null,
-            "title": "Samsung Galaxy Z Fold 3 Review - MobileTechReview",
-            "description": null,
-            "url": "https://news.google.com/__i/rss/rd/articles/CBMiK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9YXpYQzIwOXlPNjTSAQA?oc=5",
-            "urlToImage": null,
-            "publishedAt": "2021-08-26T23:19:23Z",
-            "content": null
         }
     ]
-    
-    constructor(){
+
+    constructor() {
         super();
 
         this.state = {
@@ -279,15 +227,14 @@ export class News extends Component {
             <div className="container my-3">
                 <h2>NewsMonkey - Top Headlines</h2>
                 <div className="row">
-                    <div className="col md-4">
-                        <NewsItem title="Mytitle" description="this is description" imageUrl="https://cdn.vox-cdn.com/thumbor/mPhuzmlQufg5m_ZPgIFoXLP1DuM=/0x48:4083x2186/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/21857863/1228063613.jpg.jpg" />
-                    </div>
-                    <div className="col md-4">
-                        <NewsItem title="Mytitle" description="this is description" />
-                    </div>
-                    <div className="col md-4">
-                        <NewsItem title="Mytitle" description="this is description" />
-                    </div>
+                    {this.state.articles.map((element) => {
+                        return (
+                            <div className="col md-4" key={element.url}>
+                                <NewsItem  title={element.title.slice(0, 45)} description={element.description.slice(0, 88)} imageUrl={element.urlToImage} newsUrl={element.url} />
+                            </div>
+                        )
+                    })}
+
                 </div>
             </div>
         )
