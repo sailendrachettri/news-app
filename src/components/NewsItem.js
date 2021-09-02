@@ -12,9 +12,9 @@ export class NewsItem extends Component {
                 <div className="my-3">
 
                     <div className="card" style={{ minWidth: "18rem" }}>
-                        <span class="position-absolute top-0 translate-middle badge rounded-pill bg-primary" style={{left:"85%", zIndex: "1"}}>
+                        <span className="position-absolute top-0 translate-middle badge rounded-pill bg-primary" style={{left:"85%", zIndex: "1"}}>
                             {source}
-                            <span class="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">unread messages</span>
                         </span>
                         <img src={imageUrl} className="card-img-top" alt="news" />
                         <div className="card-body">
